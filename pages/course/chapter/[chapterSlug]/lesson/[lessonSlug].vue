@@ -1,10 +1,3 @@
-<template>
-  <h2>Lesson</h2>
-  <p>This is a lesson</p>
-  <p>{{ chapter?.title }}</p>
-  <p>{{ lesson?.title }}</p>
-</template>
-
 <script setup lang="ts">
 const course = useCourse();
 const route = useRoute();
@@ -21,3 +14,10 @@ const lesson = computed(() => {
   );
 });
 </script>
+
+<template>
+  <h2>Lesson</h2>
+  <p>This is a lesson</p>
+  <p>{{ chapter?.title }}</p>
+  <p>{{ lesson?.title }}</p>
+</template>
