@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 const props = defineProps({
   videoId: {
-    type: [String, Number],
+    type: Number,
     required: true,
   },
 });
@@ -9,6 +9,7 @@ const props = defineProps({
 
 <template>
   <iframe
+    class="max-w-[100%]"
     width="560"
     height="315"
     :src="`https://player.vimeo.com/video/${props.videoId}`"
