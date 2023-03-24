@@ -13,6 +13,12 @@ const lesson = computed(() => {
     (lesson) => lesson.slug === route.params.lessonSlug
   );
 });
+
+const title = computed(() => `${lesson.value?.title} | ${course.title}`);
+
+useHead({
+  title,
+});
 </script>
 
 <template>
