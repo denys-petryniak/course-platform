@@ -11,10 +11,9 @@ const resetError = async (error) => {
 
 <template>
   <div>
-    <div class="prose mb-12">
-      <h1 class="font-bold">
-        {{ title }}
-      </h1>
+    <div class="mb-4 flex justify-between items-center w-full">
+      <h1 class="text-3xl font-bold">{{ title }}</h1>
+      <UserCard />
     </div>
 
     <div class="flex flex-row justify-center flex-grow">
