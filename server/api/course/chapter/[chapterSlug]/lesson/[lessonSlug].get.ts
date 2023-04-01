@@ -1,9 +1,9 @@
-import { Lesson, LessonWIthPath, Chapter, Course } from "~/types/course";
+import { Lesson, LessonWithPath, Chapter, Course } from "~/types/course";
 import course from "~/server/courseData";
 
 course as Course;
 
-export default defineEventHandler((event): LessonWIthPath => {
+export default defineEventHandler((event): LessonWithPath => {
   const { chapterSlug, lessonSlug } = event.context.params;
 
   const chapter: Maybe<Chapter> = course.chapters.find(

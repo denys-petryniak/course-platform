@@ -8,7 +8,7 @@ export type Lesson = {
   sourceUrl?: string;
 };
 
-export type LessonWIthPath = Lesson & {
+export type LessonWithPath = Lesson & {
   path: string;
 };
 
@@ -16,7 +16,7 @@ export type Chapter = {
   title: string;
   slug: string;
   number: number;
-  lessons: Lesson[] | LessonWIthPath[];
+  lessons: Lesson[] | LessonWithPath[];
 };
 
 export type Course = {
