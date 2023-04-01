@@ -1,6 +1,6 @@
 <script setup>
 const error = useError();
-const { firstLesson } = useFirstLesson();
+const firstLesson = await useFirstLesson();
 
 const handleError = () => {
   clearError({

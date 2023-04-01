@@ -1,9 +1,9 @@
 <script setup>
-const { title, chapters } = useCourse();
-const { firstLesson } = useFirstLesson();
+const course = await useCourse();
+const firstLesson = await useFirstLesson();
 
 const resetError = async (error) => {
-  await navigateTo(firstLesson);
+  await navigateTo(firstLesson.path);
 
   error.value = null;
 };
@@ -12,7 +12,7 @@ const resetError = async (error) => {
 <template>
   <div>
     <div class="mb-4 flex justify-between items-center w-full">
-      <h1 class="text-3xl font-bold">{{ title }}</h1>
+      <h1 class="text-3xl font-bold">{{ course.title }}</h1>
       <UserCard />
     </div>
 
@@ -23,7 +23,7 @@ const resetError = async (error) => {
         <h3>Chapters</h3>
         <div
           class="space-y-1 mb-4 flex flex-col"
-          v-for="chapter in chapters"
+          v-for="chapter in course.chapters"
           :key="chapter.slug"
         >
           <h4>{{ chapter.title }}</h4>
