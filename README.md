@@ -1,42 +1,7 @@
-# Nuxt 3 Minimal Starter
+# Online Course Platform
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+This app is a full-stack web application that utilizes various technologies to create a robust and maintainable user experience. 
 
-## Setup
+On the *frontend*, the app is built using the `Nuxt 3` framework, which allows for file-based routing, universal rendering, and improved maintainability. The frontend also includes `TypeScript` for type safety and thorough error-handling.
 
-Make sure to install the dependencies:
-
-```bash
-# yarn
-yarn install
-
-# npm
-npm install
-
-# pnpm
-pnpm install
-```
-
-## Development Server
-
-Start the development server on http://localhost:3000
-
-```bash
-npm run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-npm run build
-```
-
-Locally preview production build:
-
-```bash
-npm run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+On the *backend*, the app uses the `Nitro` server to power the Nuxt framework. Authentication is handled using `Supabase` and Nuxt middleware, while the APIs are built using `Prisma` and a `Postgres` database from `Supabase`. This allows for type-safe access to data and easy tracking of student progress through the course.
