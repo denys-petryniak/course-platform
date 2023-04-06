@@ -1,6 +1,6 @@
 # Online Course Platform
 
-This app is a full-stack web application that utilizes various technologies to create a robust and maintainable user experience. 
+This app is a full-stack web application that utilizes various technologies to create a robust and maintainable user experience.
 
 On the *frontend*, the app is built using the `Nuxt 3` framework, which allows for file-based routing, universal rendering, and improved maintainability. The frontend also includes `TypeScript` for type safety and thorough error-handling.
 
