@@ -5,6 +5,7 @@ export default defineNuxtConfig({
     "@nuxtjs/tailwindcss",
     "@nuxtjs/supabase",
     "@vueuse/nuxt",
+    "@pinia/nuxt",
   ],
 
   devtools: {
