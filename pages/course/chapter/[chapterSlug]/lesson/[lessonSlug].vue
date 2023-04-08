@@ -1,6 +1,7 @@
 <script setup>
 import { useCourseProgress } from "~/stores/courseProgress";
 
+const user = useSupabaseUser();
 const course = await useCourse();
 const route = useRoute();
 
