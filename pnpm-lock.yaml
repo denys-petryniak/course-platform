@@ -12,12 +12,14 @@ specifiers:
   nuxt: ^3.3.1
   pinia: ^2.0.34
 
+dependencies:
+  '@prisma/client': 4.12.0
+
 devDependencies:
   '@nuxt/devtools': 0.3.1_nuxt@3.3.1
   '@nuxtjs/supabase': 0.3.1
   '@nuxtjs/tailwindcss': 6.6.4
   '@pinia/nuxt': 0.4.8
-  '@prisma/client': 4.12.0
   '@tailwindcss/typography': 0.5.9
   '@vueuse/core': 9.13.0
   '@vueuse/nuxt': 9.13.0_nuxt@3.3.1
@@ -1322,11 +1324,11 @@ packages:
         optional: true
     dependencies:
       '@prisma/engines-version': 4.12.0-67.659ef412370fa3b41cd7bf6e94587c1dfb7f67e7
-    dev: true
+    dev: false
 
   /@prisma/engines-version/4.12.0-67.659ef412370fa3b41cd7bf6e94587c1dfb7f67e7:
     resolution: {integrity: sha512-JIHNj5jlXb9mcaJwakM0vpgRYJIAurxTUqM0iX0tfEQA5XLZ9ONkIckkhuAKdAzocZ+80GYg7QSsfpjg7OxbOA==}
-    dev: true
+    dev: false
 
   /@rollup/plugin-alias/4.0.3_rollup@3.20.0:
     resolution: {integrity: sha512-ZuDWE1q4PQDhvm/zc5Prun8sBpLJy41DMptYrS6MhAy9s9kL/doN1613BWfEchGVfKxzliJ3BjbOPizXX38DbQ==}
