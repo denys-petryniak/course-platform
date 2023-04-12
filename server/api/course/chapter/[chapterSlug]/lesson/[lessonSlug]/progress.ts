@@ -1,6 +1,7 @@
-import { PrismaClient } from "@prisma/client";
+import PrismaClientPackage from "@prisma/client";
 import protectRoute from "~/server/utils/protectRoute";
 
+const { PrismaClient } = PrismaClientPackage;
 const prisma = new PrismaClient();
 
 // Endpoint that updates the progress of a lesson

@@ -1,5 +1,6 @@
-import { PrismaClient } from "@prisma/client";
+import PrismaClientPackage from "@prisma/client";
 
+const { PrismaClient } = PrismaClientPackage;
 const prisma = new PrismaClient();
 
 async function seed() {

@@ -1,5 +1,4 @@
 import type { Lesson } from "@prisma/client";
-import { type } from "os";
 
 export type LessonWithPath = Lesson & {
   path: string;

@@ -1,8 +1,9 @@
-import { PrismaClient } from "@prisma/client";
+import PrismaClientPackage from "@prisma/client";
 import protectRoute from "~/server/utils/protectRoute";
 import { ChapterOutline, LessonOutline } from "../course/meta.get";
 import { CourseProgress, ChapterProgress } from "~/types/course";
 
+const { PrismaClient } = PrismaClientPackage;
 const prisma = new PrismaClient();
 
 export default defineEventHandler(async (event) => {

@@ -1,8 +1,10 @@
-import { Prisma, PrismaClient } from "@prisma/client";
+import PrismaClientPackage from "@prisma/client";
+import type { Prisma as PrismaType } from "@prisma/client";
 
+const { Prisma, PrismaClient } = PrismaClientPackage;
 const prisma = new PrismaClient();
 
-const lessonSelect = Prisma.validator<Prisma.LessonArgs>()({
+const lessonSelect = Prisma.validator<PrismaType.LessonArgs>()({
   select: {
     title: true,
     slug: true,
@@ -10,11 +12,11 @@ const lessonSelect = Prisma.validator<Prisma.LessonArgs>()({
   },
 });
 
-export type LessonOutline = Prisma.LessonGetPayload<typeof lessonSelect> & {
+export type LessonOutline = PrismaType.LessonGetPayload<typeof lessonSelect> & {
   path: string;
 };
 
-const chapterSelect = Prisma.validator<Prisma.ChapterArgs>()({
+const chapterSelect = Prisma.validator<PrismaType.ChapterArgs>()({
   select: {
     title: true,
     slug: true,
@@ -24,13 +26,13 @@ const chapterSelect = Prisma.validator<Prisma.ChapterArgs>()({
 });
 
 export type ChapterOutline = Omit<
-  Prisma.ChapterGetPayload<typeof chapterSelect>,
+  PrismaType.ChapterGetPayload<typeof chapterSelect>,
   "lessons"
 > & {
   lessons: LessonOutline[];
 };
 
-const courseSelect = Prisma.validator<Prisma.CourseArgs>()({
+const courseSelect = Prisma.validator<PrismaType.CourseArgs>()({
   select: {
     title: true,
     chapters: chapterSelect,
@@ -38,7 +40,7 @@ const courseSelect = Prisma.validator<Prisma.CourseArgs>()({
 });
 
 export type CourseOutline = Omit<
-  Prisma.CourseGetPayload<typeof courseSelect>,
+  PrismaType.CourseGetPayload<typeof courseSelect>,
   "chapters"
 > & {
   chapters: ChapterOutline[];
