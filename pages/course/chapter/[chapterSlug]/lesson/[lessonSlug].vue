@@ -14,7 +14,7 @@ const { initialize, toggleComplete } = store;
 initialize();
 
 const isCompleted = computed(() => {
-  return store.progress?.[chapterSlug]?.[lessonSlug] || 0;
+  return store.progress?.[chapterSlug]?.[lessonSlug] || false;
 });
 
 definePageMeta({
