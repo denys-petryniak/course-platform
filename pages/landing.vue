@@ -90,5 +90,5 @@ const showPayment = ref(false);
       </li>
     </ul>
   </Section>
-  <Payment v-if="showPayment" @close="showPayment = false" />
+  <LazyPayment v-if="showPayment" @close="showPayment = false" />
 </template>
