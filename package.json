@@ -24,5 +24,8 @@
     "pinia": "^2.0.34",
     "prisma": "^4.12.0",
     "vite-plugin-vsharp": "^1.4.2"
+  },
+  "dependencies": {
+    "stripe": "^12.2.0"
   }
 }
