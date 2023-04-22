@@ -56,7 +56,7 @@ const resetError = async (error) => {
           </NuxtLink>
         </div>
         <div
-          v-if="percentageCompleted"
+          v-if="percentageCompleted && user"
           class="mt-8 text-sm font-medium text-gray-500 flex justify-between items-center"
         >
           Course completion:
