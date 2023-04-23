@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex h-full min-h-screen w-full flex-col items-center bg-gray-100 p-12"
+    class="p-12 bg-gray-100 w-full h-full min-h-screen flex flex-col items-center"
   >
     <slot />
   </div>

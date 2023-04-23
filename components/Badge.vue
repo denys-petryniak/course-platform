@@ -13,7 +13,7 @@ withDefaults(
 
 <template>
   <span
-    class="absolute -left-12 mr-4 inline-flex h-8 w-8 items-center justify-center rounded-full text-xl text-white"
+    class="-left-12 text-xl w-8 h-8 text-white rounded-full inline-flex absolute items-center justify-center mr-4"
     :class="`${color}`"
   >
     <slot>&#10003;</slot>

@@ -17,26 +17,26 @@ const resetError = async (error) => {
 
 <template>
   <div>
-    <div class="mb-4 flex w-full items-center justify-between">
+    <div class="mb-4 flex justify-between items-center w-full">
       <h1 class="text-3xl font-bold">{{ course.title }}</h1>
       <UserCard />
     </div>
 
-    <div class="flex flex-grow flex-row justify-center">
+    <div class="flex flex-row justify-center flex-grow">
       <div
-        class="prose mr-4 flex min-w-[20ch] max-w-[30ch] flex-col rounded-md bg-white p-8"
+        class="prose mr-4 p-8 bg-white rounded-md min-w-[20ch] max-w-[30ch] flex flex-col"
       >
         <h3>Chapters</h3>
         <div
-          class="mb-4 flex flex-col space-y-1"
+          class="space-y-1 mb-4 flex flex-col"
           v-for="(chapter, index) in course.chapters"
           :key="chapter.slug"
         >
-          <h4 class="flex items-center justify-between">
+          <h4 class="flex justify-between items-center">
             {{ chapter.title }}
             <span
               v-if="percentageCompleted && user"
-              class="text-sm text-emerald-500"
+              class="text-emerald-500 text-sm"
             >
               {{ percentageCompleted.chapters[index] }}%
             </span>
@@ -44,7 +44,7 @@ const resetError = async (error) => {
           <NuxtLink
             v-for="(lesson, index) in chapter.lessons"
             :key="lesson.slug"
-            class="prose-sm -mx-4 flex flex-row space-x-1 px-4 py-1 font-normal no-underline"
+            class="flex flex-row space-x-1 no-underline prose-sm font-normal py-1 px-4 -mx-4"
             :to="lesson.path"
             :class="{
               'text-blue-500': lesson.path === $route.fullPath,
@@ -57,14 +57,14 @@ const resetError = async (error) => {
         </div>
         <div
           v-if="percentageCompleted && user"
-          class="mt-8 flex items-center justify-between text-sm font-medium text-gray-500"
+          class="mt-8 text-sm font-medium text-gray-500 flex justify-between items-center"
         >
           Course completion:
           <span> {{ percentageCompleted.course }}% </span>
         </div>
       </div>
 
-      <div class="prose w-[65ch] rounded-md bg-white p-8">
+      <div class="prose p-8 bg-white rounded-md w-[65ch]">
         <NuxtErrorBoundary>
           <NuxtPage />
           <template #error="{ error }">
@@ -74,7 +74,7 @@ const resetError = async (error) => {
             </p>
             <p>
               <button
-                class="rounded bg-gray-500 px-3 py-1 font-bold text-white hover:cursor-pointer"
+                class="hover:cursor-pointer bg-gray-500 text-white font-bold py-1 px-3 rounded"
                 @click="resetError(error)"
               >
                 Reset

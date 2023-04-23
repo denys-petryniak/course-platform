@@ -13,9 +13,9 @@ export default {
 </script>
 
 <template>
-  <div class="section flex flex-col items-center bg-white p-24">
+  <div class="section bg-white p-24 flex flex-col items-center">
     <div class="w-full max-w-4xl">
-      <h2 v-if="title" class="pb-8 text-center text-4xl font-bold">
+      <h2 v-if="title" class="text-4xl font-bold pb-8 text-center">
         {{ title }}
       </h2>
       <div v-bind="$attrs">

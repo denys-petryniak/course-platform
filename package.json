@@ -8,9 +8,7 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare && prisma generate",
-    "prettier": "prettier --check .",
-    "prettier:fix": "prettier --write ."
+    "postinstall": "nuxt prepare && prisma generate"
   },
   "devDependencies": {
     "@nuxt/devtools": "^0.3.1",
@@ -24,8 +22,6 @@
     "consola": "^3.0.2",
     "nuxt": "^3.4.1",
     "pinia": "^2.0.34",
-    "prettier": "^2.8.8",
-    "prettier-plugin-tailwindcss": "^0.2.7",
     "prisma": "^4.12.0",
     "vite-plugin-vsharp": "^1.4.2"
   },
