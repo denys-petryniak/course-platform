@@ -89,26 +89,26 @@ useHead({
 
 <template>
   <Modal @close="$emit('close')">
-    <div class="bg-slate-200 p-8 rounded-xl">
+    <div class="rounded-xl bg-slate-200 p-8">
       <div
         v-if="success"
-        class="flex flex-col justify-center items-center space-y-6"
+        class="flex flex-col items-center justify-center space-y-6"
       >
         <h2 class="text-xl font-bold">Thanks for buying the course!</h2>
         <button
           @click="login"
-          class="mt-4 w-full text-md text-black h-12 px-16 rounded focus:outline-none focus:shadow-outline flex items-center justify-center transition bg-blue-300 hover:bg-blue-200"
+          class="text-md focus:shadow-outline mt-4 flex h-12 w-full items-center justify-center rounded bg-blue-300 px-16 text-black transition hover:bg-blue-200 focus:outline-none"
         >
           Login with Github to access
         </button>
       </div>
       <form v-else @submit.prevent="handleSubmit">
-        <h2 class="font-bold text-xl text-center">Buying {{ course.title }}</h2>
-        <div class="mt-8 text-base bg-white py-6 px-8 rounded shadow-md">
-          <div class="w-full flex justify-between items-center mb-6">
+        <h2 class="text-center text-xl font-bold">Buying {{ course.title }}</h2>
+        <div class="mt-8 rounded bg-white px-8 py-6 text-base shadow-md">
+          <div class="mb-6 flex w-full items-center justify-between">
             <label class="font-bold"> Email </label>
             <input
-              class="input ml-6 focus:outline-none text-left w-full"
+              class="input ml-6 w-full text-left focus:outline-none"
               type="email"
               autocomplete="email"
               v-model="email"
@@ -121,11 +121,11 @@ useHead({
           </div>
         </div>
         <button
-          class="font-sans mt-4 w-full text-lg text-black h-12 px-16 rounded focus:outline-none focus:shadow-outline font-bold flex items-center justify-center transition"
+          class="focus:shadow-outline mt-4 flex h-12 w-full items-center justify-center rounded px-16 font-sans text-lg font-bold text-black transition focus:outline-none"
           :class="
             processingPayment || email === ''
-              ? 'bg-gray-300 cursor-not-allowed'
-              : 'bg-yellow-300 hover:bg-yellow-200 cursor-pointer'
+              ? 'cursor-not-allowed bg-gray-300'
+              : 'cursor-pointer bg-yellow-300 hover:bg-yellow-200'
           "
           :disabled="processingPayment || email === ''"
         >
