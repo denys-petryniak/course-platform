@@ -1,4 +1,13 @@
 <script setup lang="ts">
+import { onClickOutside } from "@vueuse/core";
+
+const emit = defineEmits(["close"]);
+const modalContent = ref(null);
+
+onClickOutside(modalContent, () => {
+  emit("close");
+});
+
 const previousOverflow = ref("");
 
 onMounted(() => {
@@ -23,6 +32,8 @@ onBeforeUnmount(() => {
     >
       &#10005;
     </div>
-    <slot />
+    <div ref="modalContent" class="w-full max-w-2xl">
+      <slot />
+    </div>
   </div>
 </template>
