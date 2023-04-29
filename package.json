@@ -20,13 +20,15 @@
     "@vue-macros/nuxt": "^1.2.8",
     "@vueuse/core": "^9.13.0",
     "@vueuse/nuxt": "^9.13.0",
-    "consola": "^3.0.2",
-    "nuxt": "^3.4.1",
+    "nuxt": "^3.4.3",
     "pinia": "^2.0.34",
     "prisma": "^4.12.0",
     "vite-plugin-vsharp": "^1.4.2"
   },
   "dependencies": {
     "stripe": "^12.2.0"
+  },
+  "resolutions": {
+    "consola": "^3.0.0"
   }
 }
