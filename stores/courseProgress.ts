@@ -12,7 +12,8 @@ export const useCourseProgress = defineStore("courseProgress", () => {
 
     const { data: userProgress } = await useFetch<CourseProgress>(
       "/api/user/progress",
-      { headers: useRequestHeaders(["cookie"]) }
+      // https://github.com/nuxt/nuxt/issues/14920#issuecomment-1397368855
+      { headers: useRequestHeaders(["cookie"]) as Record<string, string> }
     );
 
     // Update progress value
@@ -32,6 +33,7 @@ export const useCourseProgress = defineStore("courseProgress", () => {
       const {
         params: { chapterSlug, lessonSlug },
       } = useRoute();
+
       chapter = chapterSlug as string;
       lesson = lessonSlug as string;
     }

@@ -26,6 +26,7 @@ export default defineNuxtConfig({
     "@nuxtjs/supabase",
     "@vueuse/nuxt",
     "@pinia/nuxt",
+    "@vue-macros/nuxt",
   ],
 
   devtools: {
@@ -33,6 +34,6 @@ export default defineNuxtConfig({
   },
 
   typescript: {
-    shim: false,
+    strict: true,
   },
 });

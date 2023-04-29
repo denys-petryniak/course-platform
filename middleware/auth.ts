@@ -1,7 +1,8 @@
 export default defineNuxtRouteMiddleware(async (to) => {
   const user = useSupabaseUser();
   const { data: hasAccess } = await useFetch("/api/user/hasAccess", {
-    headers: useRequestHeaders(["cookie"]),
+    // https://github.com/nuxt/nuxt/issues/14920#issuecomment-1397368855
+    headers: useRequestHeaders(["cookie"]) as Record<string, string>,
   });
 
   if (hasAccess.value || to.params.chapterSlug === "1-chapter-1") {

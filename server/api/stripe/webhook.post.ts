@@ -49,6 +49,17 @@ export default defineEventHandler(async (event) => {
   const signature = getHeader(event, "stripe-signature");
   const body = await readRawBody(event);
 
+  if (!signature) {
+    throw new Error("Missing Stripe signature");
+  }
+
+  if (body === undefined) {
+    throw createError({
+      statusCode: 400,
+      statusMessage: "Invalid request body",
+    });
+  }
+
   // Verify the webhook signature
   let stripeEvent;
 
@@ -66,10 +77,12 @@ export default defineEventHandler(async (event) => {
     });
   }
 
+  const paymentIntent = stripeEvent.data.object as PaymentIntent;
+
   if (stripeEvent.type === "payment_intent.succeeded") {
-    await handlePaymentIntentSucceeded(stripeEvent.data.object);
+    await handlePaymentIntentSucceeded(paymentIntent);
   } else if (stripeEvent.type === "payment_intent.payment_failed") {
-    await handlePaymentIntentFailed(stripeEvent.data.object);
+    await handlePaymentIntentFailed(paymentIntent);
   }
 
   return 200;

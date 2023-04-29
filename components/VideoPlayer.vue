@@ -1,10 +1,9 @@
-<script lang="ts" setup>
-const props = defineProps({
-  videoId: {
-    type: Number,
-    required: true,
-  },
-});
+<script setup lang="ts">
+interface Props {
+  videoId: number;
+}
+
+const props = defineProps<Props>();
 </script>
 
 <template>

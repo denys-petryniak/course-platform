@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { onClickOutside } from "@vueuse/core";
 
-const emit = defineEmits(["close"]);
+const emit = defineEmits<{
+  (event: "close"): void;
+}>();
+
 const modalContent = ref(null);
 
 onClickOutside(modalContent, () => {

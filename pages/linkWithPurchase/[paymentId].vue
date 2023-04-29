@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const user = useSupabaseUser();
 
 watchEffect(async () => {
@@ -6,7 +6,8 @@ watchEffect(async () => {
     const route = useRoute();
 
     await useFetch(`/api/user/linkWithPurchase/${route.params.paymentId}`, {
-      headers: useRequestHeaders(["cookie"]),
+      // https://github.com/nuxt/nuxt/issues/14920#issuecomment-1397368855
+      headers: useRequestHeaders(["cookie"]) as Record<string, string>,
     });
 
     await navigateTo("/", {

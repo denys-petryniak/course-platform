@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const course = await useCourse();
 const config = useRuntimeConfig();
 
@@ -29,7 +29,9 @@ const setupStripe = () => {
       style: formStyle,
     });
 
-    card.value.mount("#credit-card");
+    if (card.value) {
+      card.value.mount("#credit-card");
+    }
   }
 };
 
@@ -53,12 +55,13 @@ const handleSubmit = async () => {
   }
 
   try {
-    const response = await stripe.value.confirmCardPayment(secret, {
+    const response = await stripe.value?.confirmCardPayment(secret, {
       payment_method: {
         card: card.value,
       },
       receipt_email: email.value,
     });
+
     if (response.paymentIntent.status === "succeeded") {
       success.value = true;
       paymentIntentId.value = response.paymentIntent.id;
@@ -74,12 +77,14 @@ const login = async () => {
   if (!paymentIntentId.value) return;
 
   const redirectTo = `/linkWithPurchase/${paymentIntentId.value}`;
+
   await navigateTo(`/login?redirectTo=${redirectTo}`);
 };
 
 useHead({
   script: [
     {
+      hid: "stripe",
       src: "https://js.stripe.com/v3/",
       onload: setupStripe,
     },
@@ -116,7 +121,7 @@ useHead({
               required
             />
           </div>
-          <div id="credit-card">
+          <div class="h-[20px]" id="credit-card">
             <!-- Stripe will create input elements here -->
           </div>
         </div>

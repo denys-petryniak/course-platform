@@ -1,4 +1,5 @@
-<script setup>
+<script setup lang="ts">
+import { Ref } from "vue";
 import { useCourseProgress } from "~/stores/courseProgress";
 import { storeToRefs } from "pinia";
 
@@ -8,7 +9,7 @@ const firstLesson = await useFirstLesson();
 
 const { percentageCompleted } = storeToRefs(useCourseProgress());
 
-const resetError = async (error) => {
+const resetError = async (error: Ref<Error | null>) => {
   await navigateTo(firstLesson.path);
 
   error.value = null;

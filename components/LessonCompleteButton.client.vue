@@ -1,12 +1,15 @@
-<script lang="ts" setup>
-defineProps({
-  modelValue: {
-    type: Boolean,
-    default: false,
-  },
+<script setup lang="ts">
+interface Props {
+  modelValue: boolean;
+}
+
+withDefaults(defineProps<Props>(), {
+  modelValue: false,
 });
 
-defineEmits(["update:modelValue"]);
+defineEmits<{
+  (event: "update:modelValue", chapter: string, lesson: string): void;
+}>();
 </script>
 
 <template>

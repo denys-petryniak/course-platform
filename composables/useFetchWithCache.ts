@@ -10,7 +10,8 @@ export default async <T>(url: string) => {
 
   if (!cached.value) {
     const { data, error } = await useFetch<T>(url, {
-      headers: useRequestHeaders(["cookie"]),
+      // https://github.com/nuxt/nuxt/issues/14920#issuecomment-1397368855
+      headers: useRequestHeaders(["cookie"]) as Record<string, string>,
     });
 
     if (error.value) {

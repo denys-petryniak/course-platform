@@ -1,15 +1,15 @@
 <script setup lang="ts">
-defineProps<{
+interface Props {
   title?: string;
-}>();
-</script>
+}
 
-<script lang="ts">
+defineProps<Props>();
+
 // Don't inherit the attributes from the parent component
 // since we only put them on the slot
-export default {
+defineOptions({
   inheritAttrs: false,
-};
+});
 </script>
 
 <template>
