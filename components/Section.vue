@@ -13,9 +13,9 @@ defineOptions({
 </script>
 
 <template>
-  <div class="section bg-white p-24 flex flex-col items-center">
+  <div class="section flex flex-col items-center bg-white p-24">
     <div class="w-full max-w-4xl">
-      <h2 v-if="title" class="text-4xl font-bold pb-8 text-center">
+      <h2 v-if="title" class="pb-8 text-center text-4xl font-bold">
         {{ title }}
       </h2>
       <div v-bind="$attrs">

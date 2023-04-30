@@ -14,7 +14,7 @@ defineEmits<{
 
 <template>
   <label
-    class="rounded text-white font-bold py-2 px-4 cursor-pointer"
+    class="cursor-pointer rounded px-4 py-2 font-bold text-white"
     :class="{
       'bg-green-500': modelValue,
       'bg-gray-500': !modelValue,

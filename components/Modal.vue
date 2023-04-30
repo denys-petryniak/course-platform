@@ -27,10 +27,10 @@ onBeforeUnmount(() => {
 
 <template>
   <div
-    class="backdrop-blur-xl backdrop-brightness-50 w-100vw h-100vh flex flex-col justify-center items-center fixed inset-0"
+    class="w-100vw h-100vh fixed inset-0 flex flex-col items-center justify-center backdrop-blur-xl backdrop-brightness-50"
   >
     <div
-      class="text-white text-2xl w-12 h-12 bg-slate-600 hover:bg-slate-500 transition rounded-full flex justify-center items-center cursor-pointer absolute top-4 right-4"
+      class="absolute right-4 top-4 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-slate-600 text-2xl text-white transition hover:bg-slate-500"
       @click="$emit('close')"
     >
       &#10005;

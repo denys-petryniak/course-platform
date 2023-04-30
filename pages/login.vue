@@ -27,10 +27,10 @@ const login = async () => {
 </script>
 
 <template>
-  <div class="prose w-full max-w-2xl h-9">
+  <div class="prose h-9 w-full max-w-2xl">
     <h1>Log in to {{ course.title }}</h1>
     <button
-      class="bg-blue-500 text-white font-bold py-2 px-4 rounded"
+      class="rounded bg-blue-500 px-4 py-2 font-bold text-white"
       @click="login"
     >
       Log in with Github

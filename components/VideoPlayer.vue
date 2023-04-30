@@ -9,7 +9,7 @@ const props = defineProps<Props>();
 <template>
   <div class="aspect-video">
     <iframe
-      class="w-full h-full"
+      class="h-full w-full"
       :src="`https://player.vimeo.com/video/${props.videoId}`"
       title="Video player"
       frameborder="0"
