@@ -15,7 +15,9 @@ const lesson = await useLesson(chapterSlug, lessonSlug);
 const store = useCourseProgress();
 const { initialize, toggleComplete } = store;
 
-initialize();
+if (user.value) {
+  initialize();
+}
 
 const isCompleted = computed(() => {
   return store.progress?.[chapterSlug]?.[lessonSlug] || false;
