@@ -12,7 +12,8 @@ export default defineNuxtConfig({
 
   nitro: {
     prerender: {
-      routes: ["/landing"],
+      // Only prerender the main page
+      routes: ["/"],
     },
   },
 

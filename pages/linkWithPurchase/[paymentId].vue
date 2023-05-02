@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const user = useSupabaseUser();
+const firstLesson = await useFirstLesson();
 
 watchEffect(async () => {
   if (user.value) {
@@ -10,7 +11,7 @@ watchEffect(async () => {
       headers: useRequestHeaders(["cookie"]) as Record<string, string>,
     });
 
-    await navigateTo("/", {
+    await navigateTo(firstLesson.path, {
       replace: true,
     });
   }
