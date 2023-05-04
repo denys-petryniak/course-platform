@@ -35,7 +35,7 @@ const resetError = async (error: Ref<Error | null>) => {
           <h4 class="flex items-center justify-between">
             {{ chapter.title }}
             <span
-              v-if="percentageCompleted && user"
+              v-if="percentageCompleted.chapters[index] && user"
               class="text-sm text-emerald-500"
             >
               {{ percentageCompleted.chapters[index] }}%
@@ -56,7 +56,7 @@ const resetError = async (error: Ref<Error | null>) => {
           </NuxtLink>
         </div>
         <div
-          v-if="percentageCompleted && user"
+          v-if="percentageCompleted.course && user"
           class="mt-8 flex items-center justify-between text-sm font-medium text-gray-500"
         >
           Course completion:
