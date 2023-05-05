@@ -2,6 +2,22 @@ import vsharp from "vite-plugin-vsharp";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  app: {
+    head: {
+      title: "Online Course Platform",
+      meta: [
+        {
+          name: "description",
+          content:
+            "This app is a full-stack web application that utilizes various technologies to create a robust and maintainable user experience.",
+        },
+      ],
+      htmlAttrs: {
+        lang: "en",
+      },
+    },
+  },
+
   runtimeConfig: {
     stripeSecret: "",
     stripeWebhookSecret: "",

@@ -32,8 +32,8 @@ const showPayment = ref(false);
     </h1>
     <img
       :src="screenshots[2]"
-      width="892"
-      height="558"
+      width="2880"
+      height="1800"
       alt="Course preview"
       class="w-full rounded-lg border-2 border-slate-200 shadow-lg"
     />
@@ -67,6 +67,9 @@ const showPayment = ref(false);
         v-for="(image, index) in screenshots"
         :src="image"
         :alt="`Course preview-${index + 1}`"
+        width="2880"
+        height="1800"
+        loading="lazy"
         class="w-1/2 rounded-xl border-4 border-slate-200 shadow-xl transition odd:-rotate-2 even:rotate-2 odd:hover:rotate-2 even:hover:-rotate-2"
       />
     </div>
