@@ -23,7 +23,7 @@ defineEmits<{
     <input
       type="checkbox"
       :value="modelValue"
-      @input="() => $emit('update:modelValue', !modelValue)"
+      @change="() => $emit('update:modelValue', !modelValue)"
       class="hidden"
     />
     {{ modelValue ? "Completed!" : "Mark as complete" }}

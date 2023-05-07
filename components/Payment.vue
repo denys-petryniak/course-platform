@@ -111,7 +111,7 @@ useHead({
         <h2 class="text-center text-xl font-bold">Buying {{ course.title }}</h2>
         <div class="mt-8 rounded bg-white px-8 py-6 text-base shadow-md">
           <div class="mb-6 flex w-full items-center justify-between">
-            <label class="font-bold"> Email </label>
+            <label class="font-bold">Email</label>
             <input
               class="input ml-6 w-full text-left focus:outline-none"
               type="email"
