@@ -82,6 +82,7 @@ useHead({
         v-if="lesson.sourceUrl"
         class="text-md font-normal text-gray-500"
         :href="lesson.sourceUrl"
+        target="_blank"
       >
         Download Source Code
       </NuxtLink>
@@ -89,6 +90,7 @@ useHead({
         v-if="lesson.downloadUrl"
         class="text-md font-normal text-gray-500"
         :href="lesson.downloadUrl"
+        target="_blank"
       >
         Download Video
       </NuxtLink>
