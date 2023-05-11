@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import { useCourseProgress } from "~/stores/courseProgress";
 
 const user = useSupabaseUser();
