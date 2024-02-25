@@ -1,11 +1,56 @@
 # Online Course Platform
 
-![Screenshot 2023-11-24 at 13 30 31](https://github.com/denys-petryniak/course-platform/assets/16530588/ce8f9354-b28e-4a9c-af72-5ab380294261)
+*This app is a full-stack web application that utilizes various technologies to create a robust and maintainable user experience.*
+
+<img src="https://github.com/denys-petryniak/course-platform/assets/16530588/ce8f9354-b28e-4a9c-af72-5ab380294261" alt="Screenshot 2023-11-24 at 13 30 31" width="650">
+
+## Explore in StackBlitz
+
+Click the button below to open the project in StackBlitz for preview and experimentation:
 
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/denys-petryniak/course-platform)
 
-This app is a full-stack web application that utilizes various technologies to create a robust and maintainable user experience.
+Feel free to explore the code, make changes, and see the results in real-time!
 
-On the *frontend*, the app is built using the `Nuxt 3` framework, which allows for file-based routing, universal rendering, and improved maintainability. The frontend also includes `TypeScript` for type safety and thorough error-handling.
+## Setup
 
-On the *backend*, the app uses the `Nitro` server to power the Nuxt framework. Authentication is handled using `Supabase` and Nuxt middleware, while the APIs are built using `Prisma` and a `Postgres` database from `Supabase`. This allows for type-safe access to data and easy tracking of student progress through the course.
+Make sure to install the dependencies:
+
+```bash
+# yarn
+yarn install
+
+# npm
+npm install
+
+# pnpm
+pnpm install --shamefully-hoist
+```
+
+## Development Server
+
+Start the development server on http://localhost:3000
+
+```bash
+npm run dev
+```
+
+## Production
+
+Build the application for production:
+
+```bash
+npm run build
+```
+
+Locally preview production build:
+
+```bash
+npm run preview
+```
+
+Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+
+
+
+
