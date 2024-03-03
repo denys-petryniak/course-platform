@@ -1,14 +1,14 @@
 import PrismaClientPackage from "@prisma/client";
 import protectRoute from "~/server/utils/protectRoute";
-import { ChapterOutline, LessonOutline } from "../course/meta.get";
-import { CourseProgress, ChapterProgress } from "~/types/course";
+import type { ChapterOutline, LessonOutline } from "../course/meta.get";
+import type { CourseProgress, ChapterProgress } from "~/types/course";
 
 const { PrismaClient } = PrismaClientPackage;
 const prisma = new PrismaClient();
 
 export default defineEventHandler(async (event) => {
   // Throw a 401 if there is no user logged in.
-  protectRoute(event);
+  await protectRoute(event);
 
   // Get user email from the supabase user if there is one.
   const {
