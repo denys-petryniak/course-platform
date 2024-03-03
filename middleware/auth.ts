@@ -1,17 +1,17 @@
 export default defineNuxtRouteMiddleware(async (to) => {
   const user = useSupabaseUser();
-  const { data: hasAccess } = await useFetch("/api/user/hasAccess", {
+  const hasAccess = await $fetch("/api/user/hasAccess", {
     // https://github.com/nuxt/nuxt/issues/14920#issuecomment-1397368855
     headers: useRequestHeaders(["cookie"]) as Record<string, string>,
   });
 
   const firstChapterSlug = "1-chapter-1";
 
-  if (hasAccess.value || to.params.chapterSlug === firstChapterSlug) {
+  if (hasAccess || to.params.chapterSlug === firstChapterSlug) {
     return;
   }
 
-  if (user.value && !hasAccess.value) {
+  if (user.value && !hasAccess) {
     // Prevent logging in with Github if user has not purchased course
     const client = useSupabaseClient();
     await client.auth.signOut();
