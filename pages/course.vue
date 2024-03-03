@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { Ref } from "vue";
 import { useCourseProgress } from "~/stores/courseProgress";
 import { storeToRefs } from "pinia";
 

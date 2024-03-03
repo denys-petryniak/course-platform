@@ -11,22 +11,22 @@
     "postinstall": "nuxt prepare && prisma generate"
   },
   "devDependencies": {
-    "@nuxt/devtools": "^0.3.1",
-    "@nuxtjs/supabase": "^0.3.1",
-    "@nuxtjs/tailwindcss": "^6.6.4",
-    "@pinia/nuxt": "^0.4.8",
-    "@prisma/client": "^4.12.0",
-    "@tailwindcss/typography": "^0.5.9",
-    "@vue-macros/nuxt": "^1.2.8",
-    "@vueuse/core": "^9.13.0",
-    "@vueuse/nuxt": "^9.13.0",
-    "nuxt": "^3.4.3",
-    "pinia": "^2.0.34",
-    "prisma": "^4.12.0",
-    "vite-plugin-vsharp": "^1.4.2"
+    "@nuxt/devtools": "^1.0.8",
+    "@nuxtjs/supabase": "^1.1.6",
+    "@nuxtjs/tailwindcss": "^6.11.4",
+    "@pinia/nuxt": "^0.5.1",
+    "@prisma/client": "^5.10.2",
+    "@tailwindcss/typography": "^0.5.10",
+    "@vue-macros/nuxt": "^1.9.21",
+    "@vueuse/core": "^10.9.0",
+    "@vueuse/nuxt": "^10.9.0",
+    "nuxt": "^3.10.3",
+    "pinia": "^2.1.7",
+    "prisma": "^5.10.2",
+    "vite-plugin-vsharp": "^1.7.3"
   },
   "dependencies": {
-    "stripe": "^12.2.0"
+    "stripe": "^14.19.0"
   },
   "resolutions": {
     "consola": "^3.0.0"

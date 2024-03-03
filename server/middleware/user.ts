@@ -1,7 +1,12 @@
 import { serverSupabaseUser } from "#supabase/server";
 
 export default defineEventHandler(async (event) => {
-  const user = await serverSupabaseUser(event);
+  const cookies = parseCookies(event);
 
-  event.context.user = user;
+  // Errors with "invalid claim: missing sub claim"
+  // See https://github.com/nuxt-modules/supabase/issues/238
+  if (cookies["sb-access-token"] && cookies["sb-refresh-token"]) {
+    const user = await serverSupabaseUser(event);
+    event.context.user = user;
+  }
 });

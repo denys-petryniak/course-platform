@@ -46,6 +46,14 @@ export default defineNuxtConfig({
     "@vue-macros/nuxt",
   ],
 
+  supabase: {
+    redirectOptions: {
+      login: "/login",
+      callback: "/confirm",
+      exclude: ["/*"], // implemented own auth behavior in the auth middleware
+    },
+  },
+
   devtools: {
     enabled: false,
   },

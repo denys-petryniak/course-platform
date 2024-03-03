@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 const user = useSupabaseUser();
-const { auth } = useSupabaseClient();
+const supabase = useSupabaseClient();
 
 const logout = async () => {
-  const { error } = await auth.signOut();
+  const { error } = await supabase.auth.signOut();
 
   if (error) {
     console.error(error);
