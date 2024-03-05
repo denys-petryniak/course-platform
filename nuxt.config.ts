@@ -1,35 +1,35 @@
-import vsharp from "vite-plugin-vsharp";
+import vsharp from 'vite-plugin-vsharp'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   app: {
     head: {
-      title: "Online Course Platform",
+      title: 'Online Course Platform',
       meta: [
         {
-          name: "description",
+          name: 'description',
           content:
-            "This app is a full-stack web application that utilizes various technologies to create a robust and maintainable user experience.",
+            'This app is a full-stack web application that utilizes various technologies to create a robust and maintainable user experience.',
         },
       ],
       htmlAttrs: {
-        lang: "en",
+        lang: 'en',
       },
     },
   },
 
   runtimeConfig: {
-    stripeSecret: "",
-    stripeWebhookSecret: "",
+    stripeSecret: '',
+    stripeWebhookSecret: '',
     public: {
-      stripeKey: "",
+      stripeKey: '',
     },
   },
 
   nitro: {
     prerender: {
       // Only prerender the main page
-      routes: ["/"],
+      routes: ['/'],
     },
   },
 
@@ -38,19 +38,19 @@ export default defineNuxtConfig({
   },
 
   modules: [
-    "@nuxt/devtools",
-    "@nuxtjs/tailwindcss",
-    "@nuxtjs/supabase",
-    "@vueuse/nuxt",
-    "@pinia/nuxt",
-    "@vue-macros/nuxt",
+    '@nuxt/devtools',
+    '@nuxtjs/tailwindcss',
+    '@nuxtjs/supabase',
+    '@vueuse/nuxt',
+    '@pinia/nuxt',
+    '@vue-macros/nuxt',
   ],
 
   supabase: {
     redirectOptions: {
-      login: "/login",
-      callback: "/confirm",
-      exclude: ["/*"], // implemented own auth behavior in the auth middleware
+      login: '/login',
+      callback: '/confirm',
+      exclude: ['/*'], // implemented own auth behavior in the auth middleware
     },
   },
 
@@ -61,4 +61,4 @@ export default defineNuxtConfig({
   typescript: {
     strict: true,
   },
-});
+})

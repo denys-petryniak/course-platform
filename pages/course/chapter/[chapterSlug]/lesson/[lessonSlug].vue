@@ -1,74 +1,73 @@
 <script lang="ts" setup>
-import { useCourseProgress } from "~/stores/courseProgress";
+import { useCourseProgress } from '~/stores/courseProgress'
 
-const user = useSupabaseUser();
-const course = await useCourse();
-const route = useRoute();
+const user = useSupabaseUser()
+const course = await useCourse()
+const route = useRoute()
 
 const { chapterSlug, lessonSlug } = route.params as {
-  chapterSlug: string;
-  lessonSlug: string;
-};
-
-const lesson = await useLesson(chapterSlug, lessonSlug);
-
-const store = useCourseProgress();
-const { initialize, toggleComplete } = store;
-
-if (user.value) {
-  initialize();
+  chapterSlug: string
+  lessonSlug: string
 }
 
+const lesson = await useLesson(chapterSlug, lessonSlug)
+
+const store = useCourseProgress()
+const { initialize, toggleComplete } = store
+
+if (user.value)
+  initialize()
+
 const isCompleted = computed(() => {
-  return store.progress?.[chapterSlug]?.[lessonSlug] || false;
-});
+  return store.progress?.[chapterSlug]?.[lessonSlug] || false
+})
 
 definePageMeta({
   middleware: [
     async ({ params }) => {
-      const course = await useCourse();
+      const course = await useCourse()
 
       const chapter = course.value.chapters.find(
-        (chapter) => chapter.slug === params.chapterSlug
-      );
+        chapter => chapter.slug === params.chapterSlug,
+      )
 
       if (!chapter) {
         return abortNavigation(
           createError({
             statusCode: 404,
-            message: "Chapter not found",
-          })
-        );
+            message: 'Chapter not found',
+          }),
+        )
       }
 
       const lesson = chapter.lessons.find(
-        (lesson) => lesson.slug === params.lessonSlug
-      );
+        lesson => lesson.slug === params.lessonSlug,
+      )
 
       if (!lesson) {
         return abortNavigation(
           createError({
             statusCode: 404,
-            message: "Lesson not found",
-          })
-        );
+            message: 'Lesson not found',
+          }),
+        )
       }
     },
-    "auth",
+    'auth',
   ],
-});
+})
 
 const chapter = computed(() => {
   return course.value.chapters.find(
-    (chapter) => chapter.slug === route.params.chapterSlug
-  );
-});
+    chapter => chapter.slug === route.params.chapterSlug,
+  )
+})
 
-const title = computed(() => `${lesson.value?.title} | ${course.value.title}`);
+const title = computed(() => `${lesson.value?.title} | ${course.value.title}`)
 
 useHead({
   title,
-});
+})
 </script>
 
 <template>
@@ -76,7 +75,9 @@ useHead({
     <p class="mb-1 mt-0 font-bold uppercase text-slate-400">
       Lesson {{ chapter?.number }} - {{ lesson.number }}
     </p>
-    <h2 class="my-0">{{ lesson?.title }}</h2>
+    <h2 class="my-0">
+      {{ lesson?.title }}
+    </h2>
     <div class="mb-8 mt-2 flex space-x-4">
       <NuxtLink
         v-if="lesson.sourceUrl"
@@ -95,12 +96,12 @@ useHead({
         Download Video
       </NuxtLink>
     </div>
-    <VideoPlayer v-if="lesson.videoId" :videoId="lesson.videoId" />
+    <VideoPlayer v-if="lesson.videoId" :video-id="lesson.videoId" />
     <p>{{ lesson.text }}</p>
     <LessonCompleteButton
       v-if="user"
-      :modelValue="isCompleted"
-      @update:modelValue="toggleComplete"
+      :model-value="isCompleted"
+      @update:model-value="toggleComplete"
     />
   </div>
 </template>

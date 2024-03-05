@@ -1,15 +1,15 @@
 <script lang="ts" setup>
 interface Props {
-  modelValue: boolean;
+  modelValue: boolean
 }
 
 withDefaults(defineProps<Props>(), {
   modelValue: false,
-});
+})
 
 defineEmits<{
-  (event: "update:modelValue", chapter: string, lesson: string): void;
-}>();
+  (event: 'update:modelValue', chapter: string, lesson: string): void
+}>()
 </script>
 
 <template>
@@ -23,9 +23,9 @@ defineEmits<{
     <input
       type="checkbox"
       :value="modelValue"
-      @change="() => $emit('update:modelValue', !modelValue)"
       class="hidden"
-    />
+      @change="() => $emit('update:modelValue', !modelValue)"
+    >
     {{ modelValue ? "Completed!" : "Mark as complete" }}
   </label>
 </template>

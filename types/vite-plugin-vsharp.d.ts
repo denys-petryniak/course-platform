@@ -1,1 +1,1 @@
-declare module "vite-plugin-vsharp";
+declare module 'vite-plugin-vsharp';

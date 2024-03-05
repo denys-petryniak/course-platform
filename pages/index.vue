@@ -1,28 +1,28 @@
 <script lang="ts" setup>
-import screen1 from "~/assets/images/screen1.png";
-import screen2 from "~/assets/images/screen2.png";
-import screen3 from "~/assets/images/screen3.png";
-import screen4 from "~/assets/images/screen4.png";
-import screen5 from "~/assets/images/screen5.png";
+import screen1 from '~/assets/images/screen1.png'
+import screen2 from '~/assets/images/screen2.png'
+import screen3 from '~/assets/images/screen3.png'
+import screen4 from '~/assets/images/screen4.png'
+import screen5 from '~/assets/images/screen5.png'
 
-const course = await useCourse();
-const firstLesson = await useFirstLesson();
+const course = await useCourse()
+const firstLesson = await useFirstLesson()
 
 const learningOutcomes = [
-  "Hands-On Experience with the Benefits of TypeScript",
-  "How to make the most out of your IDE",
-  "How to use TypeScript with the Composition API",
-  "How to use TypeScript with the Options API",
-  "How to type reactive data, refs, props, custom events, event handlers, DOM elements, template refs, data from provide/inject, and more",
-];
+  'Hands-On Experience with the Benefits of TypeScript',
+  'How to make the most out of your IDE',
+  'How to use TypeScript with the Composition API',
+  'How to use TypeScript with the Options API',
+  'How to type reactive data, refs, props, custom events, event handlers, DOM elements, template refs, data from provide/inject, and more',
+]
 
-const screenshots = [screen1, screen2, screen3, screen4, screen5];
+const screenshots = [screen1, screen2, screen3, screen4, screen5]
 
 definePageMeta({
   layout: false,
-});
+})
 
-const showPayment = ref(false);
+const showPayment = ref(false)
 </script>
 
 <template>
@@ -36,7 +36,7 @@ const showPayment = ref(false);
       height="1800"
       alt="Course preview"
       class="w-full rounded-lg border-2 border-slate-200 shadow-lg"
-    />
+    >
     <div class="text-2xl font-medium">
       Learn how to use TypeScript in your Vue projects to supercharge your IDE's
       error detection and autocompletion, as well as provide type safe code
@@ -48,7 +48,9 @@ const showPayment = ref(false);
     >
       Buy Now
     </button>
-    <p class="space-y-4 text-xl font-medium">or</p>
+    <p class="space-y-4 text-xl font-medium">
+      or
+    </p>
     <NuxtLink class="text-xl font-medium underline" :to="firstLesson.path">
       Go to first free lesson
     </NuxtLink>
@@ -65,13 +67,14 @@ const showPayment = ref(false);
     <div class="relative my-12 flex flex-row flex-wrap">
       <img
         v-for="(image, index) in screenshots"
+        :key="image"
         :src="image"
         :alt="`Course preview-${index + 1}`"
         width="2880"
         height="1800"
         loading="lazy"
         class="w-1/2 rounded-xl border-4 border-slate-200 shadow-xl transition odd:-rotate-2 even:rotate-2 odd:hover:rotate-2 even:hover:-rotate-2"
-      />
+      >
     </div>
   </Section>
   <Section title="Course Outline">

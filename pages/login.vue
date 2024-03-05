@@ -1,32 +1,31 @@
 <script lang="ts" setup>
-const { query } = useRoute();
-const course = await useCourse();
-const { auth } = useSupabaseClient();
-const user = useSupabaseUser();
+const { query } = useRoute()
+const course = await useCourse()
+const { auth } = useSupabaseClient()
+const user = useSupabaseUser()
 
 watchEffect(async () => {
   if (user.value) {
     await navigateTo(query.redirectTo as string, {
       replace: true,
-    });
+    })
   }
-});
+})
 
-const login = async () => {
-  const redirectTo =
-    query.redirectTo !== undefined
+async function login() {
+  const redirectTo
+    = query.redirectTo !== undefined
       ? `${window.location.origin}/confirm?redirectTo=${query.redirectTo}`
-      : `${window.location.origin}/confirm`;
+      : `${window.location.origin}/confirm`
 
   const { error } = await auth.signInWithOAuth({
-    provider: "github",
+    provider: 'github',
     options: { redirectTo },
-  });
+  })
 
-  if (error) {
-    console.error(error);
-  }
-};
+  if (error)
+    console.error(error)
+}
 </script>
 
 <template>

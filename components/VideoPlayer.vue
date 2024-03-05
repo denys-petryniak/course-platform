@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 interface Props {
-  videoId: number;
+  videoId: number
 }
 
-const props = defineProps<Props>();
+const props = defineProps<Props>()
 </script>
 
 <template>
@@ -15,6 +15,6 @@ const props = defineProps<Props>();
       frameborder="0"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
       allowfullscreen
-    ></iframe>
+    />
   </div>
 </template>

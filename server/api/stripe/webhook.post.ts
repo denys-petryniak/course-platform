@@ -1,12 +1,12 @@
-import { PrismaClient } from "@prisma/client";
-import stripe from "./stripe";
+import { PrismaClient } from '@prisma/client'
+import stripe from './stripe'
 
-type PaymentIntent = {
-  id: string;
-};
+interface PaymentIntent {
+  id: string
+}
 
-const prisma = new PrismaClient();
-const STRIPE_WEBHOOK_SECRET = useRuntimeConfig().stripeWebhookSecret;
+const prisma = new PrismaClient()
+const STRIPE_WEBHOOK_SECRET = useRuntimeConfig().stripeWebhookSecret
 
 async function handlePaymentIntentSucceeded(paymentIntent: PaymentIntent) {
   // Verify the related course purchase
@@ -18,13 +18,14 @@ async function handlePaymentIntentSucceeded(paymentIntent: PaymentIntent) {
       data: {
         verified: true,
       },
-    });
-  } catch (error) {
-    console.error(error);
+    })
+  }
+  catch (error) {
+    console.error(error)
     throw createError({
       statusCode: 500,
-      statusMessage: "Error verifying purchase",
-    });
+      statusMessage: 'Error verifying purchase',
+    })
   }
 }
 
@@ -35,55 +36,55 @@ async function handlePaymentIntentFailed(paymentIntent: PaymentIntent) {
       where: {
         paymentId: paymentIntent.id,
       },
-    });
-  } catch (error) {
-    console.error(error);
+    })
+  }
+  catch (error) {
+    console.error(error)
     throw createError({
       statusCode: 500,
-      statusMessage: "Error removing purchase",
-    });
+      statusMessage: 'Error removing purchase',
+    })
   }
 }
 
 export default defineEventHandler(async (event) => {
-  const signature = getHeader(event, "stripe-signature");
-  const body = await readRawBody(event);
+  const signature = getHeader(event, 'stripe-signature')
+  const body = await readRawBody(event)
 
-  if (!signature) {
-    throw new Error("Missing Stripe signature");
-  }
+  if (!signature)
+    throw new Error('Missing Stripe signature')
 
   if (body === undefined) {
     throw createError({
       statusCode: 400,
-      statusMessage: "Invalid request body",
-    });
+      statusMessage: 'Invalid request body',
+    })
   }
 
   // Verify the webhook signature
-  let stripeEvent;
+  let stripeEvent
 
   try {
     stripeEvent = await stripe.webhooks.constructEvent(
       body,
       signature,
-      STRIPE_WEBHOOK_SECRET
-    );
-  } catch (error) {
-    console.error(error);
+      STRIPE_WEBHOOK_SECRET,
+    )
+  }
+  catch (error) {
+    console.error(error)
     throw createError({
       statusCode: 400,
-      statusMessage: "Invalid signature",
-    });
+      statusMessage: 'Invalid signature',
+    })
   }
 
-  const paymentIntent = stripeEvent.data.object as PaymentIntent;
+  const paymentIntent = stripeEvent.data.object as PaymentIntent
 
-  if (stripeEvent.type === "payment_intent.succeeded") {
-    await handlePaymentIntentSucceeded(paymentIntent);
-  } else if (stripeEvent.type === "payment_intent.payment_failed") {
-    await handlePaymentIntentFailed(paymentIntent);
-  }
+  if (stripeEvent.type === 'payment_intent.succeeded')
+    await handlePaymentIntentSucceeded(paymentIntent)
+  else if (stripeEvent.type === 'payment_intent.payment_failed')
+    await handlePaymentIntentFailed(paymentIntent)
 
-  return 200;
-});
+  return 200
+})

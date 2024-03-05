@@ -1,24 +1,26 @@
 <script lang="ts" setup>
-import { useCourseProgress } from "~/stores/courseProgress";
-import { storeToRefs } from "pinia";
+import { storeToRefs } from 'pinia'
+import { useCourseProgress } from '~/stores/courseProgress'
 
-const user = useSupabaseUser();
-const course = await useCourse();
-const firstLesson = await useFirstLesson();
+const user = useSupabaseUser()
+const course = await useCourse()
+const firstLesson = await useFirstLesson()
 
-const { percentageCompleted } = storeToRefs(useCourseProgress());
+const { percentageCompleted } = storeToRefs(useCourseProgress())
 
-const resetError = async (error: Ref<Error | null>) => {
-  await navigateTo(firstLesson.path);
+async function resetError(error: Ref<Error | null>) {
+  await navigateTo(firstLesson.path)
 
-  error.value = null;
-};
+  error.value = null
+}
 </script>
 
 <template>
   <div>
     <div class="mb-4 flex w-full items-center justify-between">
-      <h1 class="text-3xl font-bold">{{ course.title }}</h1>
+      <h1 class="text-3xl font-bold">
+        {{ course.title }}
+      </h1>
       <UserCard />
     </div>
     <div class="flex flex-grow flex-row justify-center">
@@ -27,21 +29,21 @@ const resetError = async (error: Ref<Error | null>) => {
       >
         <h3>Chapters</h3>
         <div
-          class="mb-4 flex flex-col space-y-1"
-          v-for="(chapter, index) in course.chapters"
+          v-for="(chapter, chapterIndex) in course.chapters"
           :key="chapter.slug"
+          class="mb-4 flex flex-col space-y-1"
         >
           <h4 class="flex items-center justify-between">
             {{ chapter.title }}
             <span
-              v-if="percentageCompleted.chapters[index] && user"
+              v-if="percentageCompleted.chapters[chapterIndex] && user"
               class="text-sm text-emerald-500"
             >
-              {{ percentageCompleted.chapters[index] }}%
+              {{ percentageCompleted.chapters[chapterIndex] }}%
             </span>
           </h4>
           <NuxtLink
-            v-for="(lesson, index) in chapter.lessons"
+            v-for="(lesson, lessonIndex) in chapter.lessons"
             :key="lesson.slug"
             class="prose-sm -mx-4 flex flex-row space-x-1 px-4 py-1 font-normal no-underline"
             :to="lesson.path"
@@ -50,7 +52,7 @@ const resetError = async (error: Ref<Error | null>) => {
               'text-gray-600': lesson.path !== $route.fullPath,
             }"
           >
-            <span class="text-gray-500">{{ index + 1 }}.</span>
+            <span class="text-gray-500">{{ lessonIndex + 1 }}.</span>
             <span>{{ lesson.title }}</span>
           </NuxtLink>
         </div>

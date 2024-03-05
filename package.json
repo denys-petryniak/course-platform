@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "private": true,
   "prisma": {
     "seed": "node prisma/seed.mjs"
@@ -8,9 +9,15 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare && prisma generate"
+    "postinstall": "nuxt prepare && prisma generate",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "dependencies": {
+    "stripe": "^14.19.0"
   },
   "devDependencies": {
+    "@antfu/eslint-config": "^2.8.0",
     "@nuxt/devtools": "^1.0.8",
     "@nuxtjs/supabase": "^1.1.6",
     "@nuxtjs/tailwindcss": "^6.11.4",
@@ -20,12 +27,10 @@
     "@vue-macros/nuxt": "^1.9.21",
     "@vueuse/core": "^10.9.0",
     "@vueuse/nuxt": "^10.9.0",
+    "eslint": "^8.57.0",
     "nuxt": "^3.10.3",
     "pinia": "^2.1.7",
     "prisma": "^5.10.2",
     "vite-plugin-vsharp": "^1.7.3"
-  },
-  "dependencies": {
-    "stripe": "^14.19.0"
   }
 }

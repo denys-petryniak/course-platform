@@ -1,18 +1,17 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from '@prisma/client'
 
-const prisma = new PrismaClient();
+const prisma = new PrismaClient()
 
-type User = {
-  email: string;
-};
+interface User {
+  email: string
+}
 
 export default defineEventHandler(async (event) => {
-  const user = event.context.user as User;
+  const user = event.context.user as User
 
   // No user is logged in
-  if (!user) {
-    return false;
-  }
+  if (!user)
+    return false
 
   const coursePurchases = await prisma.coursePurchase.findMany({
     where: {
@@ -21,8 +20,8 @@ export default defineEventHandler(async (event) => {
       // Hard coded course ID
       courseId: 1,
     },
-  });
+  })
 
   // This user has purchased the course
-  return coursePurchases.length > 0;
-});
+  return coursePurchases.length > 0
+})

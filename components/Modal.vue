@@ -1,28 +1,28 @@
 <script lang="ts" setup>
-import { onClickOutside } from "@vueuse/core";
+import { onClickOutside } from '@vueuse/core'
 
 const emit = defineEmits<{
-  (event: "close"): void;
-}>();
+  (event: 'close'): void
+}>()
 
-const modalContent = ref(null);
+const modalContent = ref(null)
 
 onClickOutside(modalContent, () => {
-  emit("close");
-});
+  emit('close')
+})
 
-const previousOverflow = ref("");
+const previousOverflow = ref('')
 
 onMounted(() => {
   // Lock the scrollbar by removing overflow if we have any
-  previousOverflow.value = document.body.style.overflow;
-  document.body.style.overflow = "hidden";
-});
+  previousOverflow.value = document.body.style.overflow
+  document.body.style.overflow = 'hidden'
+})
 
 onBeforeUnmount(() => {
   // Restore the overflow and position
-  document.body.style.overflow = previousOverflow.value;
-});
+  document.body.style.overflow = previousOverflow.value
+})
 </script>
 
 <template>

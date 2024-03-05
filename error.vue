@@ -1,12 +1,12 @@
 <script setup>
-const error = useError();
-const firstLesson = await useFirstLesson();
+const error = useError()
+const firstLesson = await useFirstLesson()
 
-const handleError = () => {
+function handleError() {
   clearError({
     redirect: firstLesson,
-  });
-};
+  })
+}
 </script>
 
 <template>

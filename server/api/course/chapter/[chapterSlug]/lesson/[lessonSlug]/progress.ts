@@ -1,22 +1,22 @@
-import PrismaClientPackage from "@prisma/client";
-import protectRoute from "~/server/utils/protectRoute";
+import PrismaClientPackage from '@prisma/client'
+import protectRoute from '~/server/utils/protectRoute'
 
-const { PrismaClient } = PrismaClientPackage;
-const prisma = new PrismaClient();
+const { PrismaClient } = PrismaClientPackage
+const prisma = new PrismaClient()
 
 // Endpoint that updates the progress of a lesson
 export default defineEventHandler(async (event) => {
   // Only allow PUT, PATCH, or POST requests
-  assertMethod(event, ["PUT", "PATCH", "POST"]);
+  assertMethod(event, ['PUT', 'PATCH', 'POST'])
 
   // Throw a 401 if there is no user logged in.
-  protectRoute(event);
+  protectRoute(event)
 
   // Get the route params
   const { chapterSlug, lessonSlug } = event.context.params as {
-    chapterSlug: string;
-    lessonSlug: string;
-  };
+    chapterSlug: string
+    lessonSlug: string
+  }
 
   // Get the lesson from the DB
   const lesson = await prisma.lesson.findFirst({
@@ -26,23 +26,23 @@ export default defineEventHandler(async (event) => {
         slug: chapterSlug,
       },
     },
-  });
+  })
 
   // If the lesson doesn't exist, throw a 404
   if (!lesson) {
     throw createError({
       statusCode: 404,
-      statusMessage: "Lesson not found",
-    });
+      statusMessage: 'Lesson not found',
+    })
   }
 
   // Get the completed value from the request body and update progress in DB
   // Select based on the chapter and lesson slugs
-  const { completed } = await readBody(event);
+  const { completed } = await readBody(event)
   // Get user email from the supabase user if there is one.
   const {
     user: { email: userEmail },
-  } = event.context;
+  } = event.context
   return prisma.lessonProgress.upsert({
     where: {
       lessonId_userEmail: {
@@ -62,5 +62,5 @@ export default defineEventHandler(async (event) => {
         },
       },
     },
-  });
-});
+  })
+})

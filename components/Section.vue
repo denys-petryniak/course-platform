@@ -1,15 +1,15 @@
 <script lang="ts" setup>
 interface Props {
-  title?: string;
+  title?: string
 }
-
-defineProps<Props>();
 
 // Don't inherit the attributes from the parent component
 // since we only put them on the slot
 defineOptions({
   inheritAttrs: false,
-});
+})
+
+defineProps<Props>()
 </script>
 
 <template>

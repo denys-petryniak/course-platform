@@ -1,26 +1,27 @@
-import { PrismaClient } from "@prisma/client";
-import stripe from "./stripe";
+import { PrismaClient } from '@prisma/client'
+import stripe from './stripe'
 
-const prisma = new PrismaClient();
+const prisma = new PrismaClient()
 
 export default defineEventHandler(async (event) => {
-  const { email } = await readBody(event);
+  const { email } = await readBody(event)
 
   // We only have one course for now, so we have the price hard-coded
-  let paymentIntent;
+  let paymentIntent
   try {
     paymentIntent = await stripe.paymentIntents.create({
       amount: 97 * 100,
-      currency: "usd",
+      currency: 'usd',
       metadata: {
         email,
       },
-    });
-  } catch (error) {
+    })
+  }
+  catch (error) {
     throw createError({
       statusCode: 500,
-      statusMessage: "Error creating payment intent",
-    });
+      statusMessage: 'Error creating payment intent',
+    })
   }
 
   // Create a course purchase record
@@ -32,14 +33,15 @@ export default defineEventHandler(async (event) => {
         courseId: 1,
         paymentId: paymentIntent.id,
       },
-    });
-  } catch (error) {
+    })
+  }
+  catch (error) {
     throw createError({
       statusCode: 500,
-      statusMessage: "Error creating course purchase",
-    });
+      statusMessage: 'Error creating course purchase',
+    })
   }
 
   // Only return the secret
-  return paymentIntent.client_secret;
-});
+  return paymentIntent.client_secret
+})

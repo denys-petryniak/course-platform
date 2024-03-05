@@ -1,13 +1,13 @@
 <script lang="ts" setup>
 interface Props {
-  color?: string;
+  color?: string
 }
 
 withDefaults(defineProps<Props>(), {
   // Must be complete Tailwind classes otherwise they will
   // not be included in build
-  color: "bg-emerald-400",
-});
+  color: 'bg-emerald-400',
+})
 </script>
 
 <template>

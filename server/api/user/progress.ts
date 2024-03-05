@@ -1,19 +1,19 @@
-import PrismaClientPackage from "@prisma/client";
-import protectRoute from "~/server/utils/protectRoute";
-import type { ChapterOutline, LessonOutline } from "../course/meta.get";
-import type { CourseProgress, ChapterProgress } from "~/types/course";
+import PrismaClientPackage from '@prisma/client'
+import type { ChapterOutline, LessonOutline } from '../course/meta.get'
+import protectRoute from '~/server/utils/protectRoute'
+import type { ChapterProgress, CourseProgress } from '~/types/course'
 
-const { PrismaClient } = PrismaClientPackage;
-const prisma = new PrismaClient();
+const { PrismaClient } = PrismaClientPackage
+const prisma = new PrismaClient()
 
 export default defineEventHandler(async (event) => {
   // Throw a 401 if there is no user logged in.
-  await protectRoute(event);
+  await protectRoute(event)
 
   // Get user email from the supabase user if there is one.
   const {
     user: { email: userEmail },
-  } = event.context;
+  } = event.context
 
   // Get the progress from the DB
   const userProgress = await prisma.lessonProgress.findMany({
@@ -41,16 +41,16 @@ export default defineEventHandler(async (event) => {
         },
       },
     },
-  });
+  })
 
   // Get course outline from meta endpoint
-  const courseOutline = await $fetch("/api/course/meta");
+  const courseOutline = await $fetch('/api/course/meta')
 
   if (!courseOutline) {
     throw createError({
       statusCode: 404,
-      statusMessage: "Course outline not found",
-    });
+      statusMessage: 'Course outline not found',
+    })
   }
 
   // Use the course outline and user progress to create a nested object
@@ -61,22 +61,22 @@ export default defineEventHandler(async (event) => {
       courseProgress[chapter.slug] = chapter.lessons.reduce(
         (chapterProgress: ChapterProgress, lesson: LessonOutline) => {
           // Collect the progress for each lesson in the chapter
-          chapterProgress[lesson.slug] =
-            userProgress.find(
-              (progress) =>
-                progress.Lesson.slug === lesson.slug &&
-                progress.Lesson.Chapter.slug === chapter.slug
-            )?.completed || false;
+          chapterProgress[lesson.slug]
+            = userProgress.find(
+              progress =>
+                progress.Lesson.slug === lesson.slug
+                && progress.Lesson.Chapter.slug === chapter.slug,
+            )?.completed || false
 
-          return chapterProgress;
+          return chapterProgress
         },
-        {}
-      );
+        {},
+      )
 
-      return courseProgress;
+      return courseProgress
     },
-    {}
-  );
+    {},
+  )
 
-  return progress;
-});
+  return progress
+})
