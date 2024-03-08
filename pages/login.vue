@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 const { query } = useRoute()
 const course = await useCourse()
 const { auth } = useSupabaseClient()

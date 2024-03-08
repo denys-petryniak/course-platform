@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { onClickOutside } from '@vueuse/core'
 
 const emit = defineEmits<{
