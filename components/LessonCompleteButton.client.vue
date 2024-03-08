@@ -8,7 +8,7 @@ withDefaults(defineProps<Props>(), {
 })
 
 defineEmits<{
-  (event: 'update:modelValue', chapter: string, lesson: string): void
+  (event: 'update:modelValue', value: boolean): void
 }>()
 </script>
 

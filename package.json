@@ -10,16 +10,17 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare && prisma generate",
+    "typecheck": "nuxt typecheck",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
-    "stripe": "^14.19.0"
+    "stripe": "^14.20.0"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^2.8.0",
     "@nuxt/devtools": "^1.0.8",
-    "@nuxtjs/supabase": "^1.1.6",
+    "@nuxtjs/supabase": "^1.1.7",
     "@nuxtjs/tailwindcss": "^6.11.4",
     "@pinia/nuxt": "^0.5.1",
     "@prisma/client": "^5.10.2",
@@ -31,6 +32,8 @@
     "nuxt": "^3.10.3",
     "pinia": "^2.1.7",
     "prisma": "^5.10.2",
-    "vite-plugin-vsharp": "^1.7.3"
+    "typescript": "^5.4.2",
+    "vite-plugin-vsharp": "^1.7.3",
+    "vue-tsc": "^2.0.6"
   }
 }
