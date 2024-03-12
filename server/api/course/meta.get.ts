@@ -4,7 +4,7 @@ import type { Prisma as PrismaType } from '@prisma/client'
 const { Prisma, PrismaClient } = PrismaClientPackage
 const prisma = new PrismaClient()
 
-const lessonSelect = Prisma.validator<PrismaType.LessonArgs>()({
+const lessonSelect = Prisma.validator<PrismaType.LessonDefaultArgs>()({
   select: {
     title: true,
     slug: true,
@@ -16,7 +16,7 @@ export type LessonOutline = PrismaType.LessonGetPayload<typeof lessonSelect> & {
   path: string
 }
 
-const chapterSelect = Prisma.validator<PrismaType.ChapterArgs>()({
+const chapterSelect = Prisma.validator<PrismaType.ChapterDefaultArgs>()({
   select: {
     title: true,
     slug: true,
@@ -32,7 +32,7 @@ export type ChapterOutline = Omit<
   lessons: LessonOutline[]
 }
 
-const courseSelect = Prisma.validator<PrismaType.CourseArgs>()({
+const courseSelect = Prisma.validator<PrismaType.CourseDefaultArgs>()({
   select: {
     title: true,
     chapters: chapterSelect,
