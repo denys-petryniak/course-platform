@@ -1,6 +1,6 @@
 # Online Course Platform
 
-*This app is a full-stack web application that utilizes various technologies to create a robust and maintainable user experience.*
+*This full-stack web application utilizes various technologies to create a robust and maintainable user experience.*
 
 <img src="https://github.com/denys-petryniak/course-platform/assets/16530588/ce8f9354-b28e-4a9c-af72-5ab380294261" alt="Screenshot 2023-11-24 at 13 30 31" width="650">
 
@@ -17,14 +17,7 @@ Feel free to explore the code, make changes, and see the results in real-time!
 Make sure to install the dependencies:
 
 ```bash
-# yarn
-yarn install
-
-# npm
-npm install
-
-# pnpm
-pnpm install --shamefully-hoist
+pnpm install
 ```
 
 ## Development Server
@@ -32,7 +25,7 @@ pnpm install --shamefully-hoist
 Start the development server on http://localhost:3000
 
 ```bash
-npm run dev
+pnpm dev
 ```
 
 ## Production
@@ -40,13 +33,13 @@ npm run dev
 Build the application for production:
 
 ```bash
-npm run build
+pnpm build
 ```
 
 Locally preview production build:
 
 ```bash
-npm run preview
+pnpm preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
